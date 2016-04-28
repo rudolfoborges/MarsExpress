@@ -6,7 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MarsExpressApplication {
 
+	/*
 	public static void main(String[] args) {
 		SpringApplication.run(MarsExpressApplication.class, args);
 	}
+	*/
 }
