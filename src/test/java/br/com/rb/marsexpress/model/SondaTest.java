@@ -39,4 +39,11 @@ public class SondaTest {
 		Sonda sonda = new Sonda(1, SONDA_NOME);
 		sonda.aterrissar(planalto, new Posicao(6, 6, Direcao.N));
 	}
+	
+	@Test
+	public void testToString(){
+		Sonda sonda = new Sonda(1, SONDA_NOME);
+		String esperado = String.format("Eu sou a sonda %s. O planeta vermelho é meu provável destino.", SONDA_NOME);
+		assert sonda.toString().equals(esperado);
+	}
 }
