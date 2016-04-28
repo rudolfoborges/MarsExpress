@@ -1,6 +1,6 @@
 package br.com.rb.marsexpress.model;
 
-import br.com.rb.marsexpress.HoustonIHaveAProblemException;
+import br.com.rb.marsexpress.exception.HoustonIHaveAProblemException;
 
 public class Sonda {
 

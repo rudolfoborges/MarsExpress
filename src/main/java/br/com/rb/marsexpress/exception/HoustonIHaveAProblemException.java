@@ -1,4 +1,4 @@
-package br.com.rb.marsexpress;
+package br.com.rb.marsexpress.exception;
 
 public class HoustonIHaveAProblemException extends IllegalArgumentException {
 
