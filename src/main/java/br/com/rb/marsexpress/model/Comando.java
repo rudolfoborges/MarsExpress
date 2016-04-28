@@ -15,4 +15,13 @@ public enum Comando {
 	public String getValue(){
 		return comando;
 	}
+	
+	public boolean verificarComando(String comando){
+		try {
+			valueOf(comando);
+			return true;
+		} catch (IllegalArgumentException ex){
+			return false;
+		}
+	}
 }

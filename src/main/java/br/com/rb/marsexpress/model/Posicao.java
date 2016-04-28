@@ -11,6 +11,14 @@ public class Posicao {
 		this.direcao = direcao;
 	}
 	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
+	}
+	
 	
 	public String toString() {
 		return String.format("X: %s, Y: %s, Direçao: %s", x, y, direcao.getValue());
