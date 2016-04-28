@@ -8,6 +8,14 @@ public class Planalto {
 		this.y = y;
 	}
 	
+	public boolean verificarPosicao(Posicao posicao){
+		if(posicao.getX() > getX() || posicao.getY() > getY()){
+			return false;
+		}
+		
+		return true;
+	}
+	
 	public int getX() {
 		return x;
 	}

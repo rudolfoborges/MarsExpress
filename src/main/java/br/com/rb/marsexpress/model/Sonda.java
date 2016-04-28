@@ -18,7 +18,7 @@ public class Sonda {
 		this.planalto = planalto;
 		this.posicao = posicao;
 		
-		if(posicao.getX() > planalto.getX() || posicao.getY() > posicao.getY()){
+		if(!planalto.verificarPosicao(posicao)){
 			throw new HoustonIHaveAProblemException(String.format("A sonda %s aterrissou fora do planalto. A aterrissagem falhou :(", nome));
 		}
 	}
