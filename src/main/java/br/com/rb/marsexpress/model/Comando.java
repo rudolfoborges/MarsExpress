@@ -2,18 +2,24 @@ package br.com.rb.marsexpress.model;
 
 public enum Comando {
 
-	L("L"),
-	R("R"),
-	M("M");
+	L("L", new AcaoVirarParaEsquerda()),
+	R("R", new AcaoVirarParaDireita()),
+	M("M", new AcaoMoverParaFrente());
 	
 	private String comando;
+	private Acao acao;
 	
-	Comando(String comando){
+	Comando(String comando, Acao acao){
 		this.comando = comando;
+		this.acao = acao;
 	}
 	
 	public String getValue(){
 		return comando;
+	}
+	
+	public Acao getAcao() {
+		return acao;
 	}
 	
 	public boolean verificarComando(String comando){
