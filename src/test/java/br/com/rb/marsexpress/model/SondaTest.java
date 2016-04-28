@@ -1,5 +1,6 @@
 package br.com.rb.marsexpress.model;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -44,6 +45,6 @@ public class SondaTest {
 	public void testToString(){
 		Sonda sonda = new Sonda(1, SONDA_NOME);
 		String esperado = String.format("Eu sou a sonda %s. O planeta vermelho é meu provável destino.", SONDA_NOME);
-		assert sonda.toString().equals(esperado);
+		Assert.assertTrue(sonda.toString().equals(esperado));
 	}
 }

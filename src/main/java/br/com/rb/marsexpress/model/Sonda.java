@@ -31,6 +31,10 @@ public class Sonda {
 		}
 	}
 	
+	public Posicao informarPosicao(){
+		return posicao;
+	}
+	
 	public int getNumeroDeSerie(){
 		return numeroDeSerie;
 	}
