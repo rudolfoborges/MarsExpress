@@ -51,14 +51,23 @@ public class SondaTest {
 		Assert.assertTrue(sonda.toString().equals(esperado));
 	}
 	
+	@Test(expected=HoustonIHaveAProblemException.class)
+	public void testMovimentarForaDoPlanalto(){
+		Sonda sonda = new Sonda(1, SONDA_NOME);
+		sonda.aterrissar(planalto, new Posicao(1, 2, Direcao.N));
+		List<String> comandos = Arrays.asList("M", "M", "M", "M", "M", "M", "M", "M", "M");
+		
+		comandos.forEach(c -> sonda.receberComando(Comando.valueOf(c)));
+	} 
+	
 	@Test
 	public void testDesafioSonda1(){
 		Sonda sonda = new Sonda(1, SONDA_NOME);
 		sonda.aterrissar(planalto, new Posicao(1, 2, Direcao.N));
 		List<String> comandos = Arrays.asList("L", "M", "L", "M", "L", "M", "L", "M", "M");
-		comandos.forEach(c -> {
-			sonda.receberComando(Comando.valueOf(c));
-		});
+		
+		comandos.forEach(c -> sonda.receberComando(Comando.valueOf(c)));
+		
 		Assert.assertTrue(sonda.informarPosicao().toString().equals("1 3 N"));
 	}
 	
@@ -67,9 +76,9 @@ public class SondaTest {
 		Sonda sonda = new Sonda(2, SONDA_NOME);
 		sonda.aterrissar(planalto, new Posicao(3, 3, Direcao.E));
 		List<String> comandos = Arrays.asList("M", "M", "R", "M", "M", "R", "M", "R", "R", "M");
-		comandos.forEach(c -> {
-			sonda.receberComando(Comando.valueOf(c));
-		});
+		
+		comandos.forEach(c -> sonda.receberComando(Comando.valueOf(c)));
+		
 		Assert.assertTrue(sonda.informarPosicao().toString().equals("5 1 E"));
 	}
 }
