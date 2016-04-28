@@ -24,6 +24,6 @@ public class Posicao {
 	}
 	
 	public String toString() {
-		return String.format("X: %s, Y: %s, Direçao: %s", x, y, direcao.getValue());
+		return String.format("%s %s %s", x, y, direcao.getValue());
 	}
 }

@@ -1,5 +1,8 @@
 package br.com.rb.marsexpress.model;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -46,5 +49,27 @@ public class SondaTest {
 		Sonda sonda = new Sonda(1, SONDA_NOME);
 		String esperado = String.format("Eu sou a sonda %s. O planeta vermelho é meu provável destino.", SONDA_NOME);
 		Assert.assertTrue(sonda.toString().equals(esperado));
+	}
+	
+	@Test
+	public void testDesafioSonda1(){
+		Sonda sonda = new Sonda(1, SONDA_NOME);
+		sonda.aterrissar(planalto, new Posicao(1, 2, Direcao.N));
+		List<String> comandos = Arrays.asList("L", "M", "L", "M", "L", "M", "L", "M", "M");
+		comandos.forEach(c -> {
+			sonda.receberComando(Comando.valueOf(c));
+		});
+		Assert.assertTrue(sonda.informarPosicao().toString().equals("1 3 N"));
+	}
+	
+	@Test
+	public void testDesafioSonda2(){
+		Sonda sonda = new Sonda(2, SONDA_NOME);
+		sonda.aterrissar(planalto, new Posicao(3, 3, Direcao.E));
+		List<String> comandos = Arrays.asList("M", "M", "R", "M", "M", "R", "M", "R", "R", "M");
+		comandos.forEach(c -> {
+			sonda.receberComando(Comando.valueOf(c));
+		});
+		Assert.assertTrue(sonda.informarPosicao().toString().equals("5 1 E"));
 	}
 }
