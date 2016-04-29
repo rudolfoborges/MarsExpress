@@ -1,8 +1,13 @@
-package br.com.rb.marsexpress.model;
+package br.com.rb.marsexpress.model.acao;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import br.com.rb.marsexpress.model.Direcao;
+import br.com.rb.marsexpress.model.Posicao;
+import br.com.rb.marsexpress.model.acao.Acao;
+import br.com.rb.marsexpress.model.acao.AcaoMoverParaFrente;
 
 public class AcaoMoverParaFrenteTest {
 

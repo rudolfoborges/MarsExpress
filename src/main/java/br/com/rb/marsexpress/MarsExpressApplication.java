@@ -8,12 +8,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import br.com.rb.marsexpress.model.ComandoCentral;
+import br.com.rb.marsexpress.service.ComandoCentralService;
 
 @SpringBootApplication
 public class MarsExpressApplication implements CommandLineRunner {
 
-	private @Autowired ComandoCentral comandoCentral;
+	@Autowired ComandoCentralService comandoCentral;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(MarsExpressApplication.class, args);

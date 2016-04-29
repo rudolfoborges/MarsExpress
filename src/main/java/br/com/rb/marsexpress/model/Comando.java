@@ -1,5 +1,10 @@
 package br.com.rb.marsexpress.model;
 
+import br.com.rb.marsexpress.model.acao.Acao;
+import br.com.rb.marsexpress.model.acao.AcaoMoverParaFrente;
+import br.com.rb.marsexpress.model.acao.AcaoVirarParaDireita;
+import br.com.rb.marsexpress.model.acao.AcaoVirarParaEsquerda;
+
 public enum Comando {
 
 	L("L", new AcaoVirarParaEsquerda()),

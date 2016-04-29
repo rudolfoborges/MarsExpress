@@ -1,4 +1,4 @@
-package br.com.rb.marsexpress.model;
+package br.com.rb.marsexpress.service;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,15 +9,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import br.com.rb.marsexpress.model.Comando;
+import br.com.rb.marsexpress.model.Planalto;
+import br.com.rb.marsexpress.model.Posicao;
+import br.com.rb.marsexpress.model.Sonda;
 
 /**
  * I am Houston. :)
  * @author rudolfoborges
  *
  */
-@Component
-public class ComandoCentral {
+@Service
+public class ComandoCentralService {
 
 	private static final String[] SONDAS = {"Spirit", "Opportunity", "Curiosity", "Mars Pathfinder", "Viking", "ExoMars"};
 	private int sondasEnviadas = 0;

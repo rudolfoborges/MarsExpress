@@ -1,4 +1,7 @@
-package br.com.rb.marsexpress.model;
+package br.com.rb.marsexpress.model.acao;
+
+import br.com.rb.marsexpress.model.Direcao;
+import br.com.rb.marsexpress.model.Posicao;
 
 public class AcaoVirarParaDireita implements Acao {
 

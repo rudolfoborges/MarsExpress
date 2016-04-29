@@ -23,7 +23,7 @@ public class Sonda {
 		}
 	}
 	
-	public void receberComando(Comando comando){
+	public void receberComando(final Comando comando){
 		posicao = comando.getAcao().executar(posicao);
 		
 		if(!planalto.verificarPosicao(posicao)){
