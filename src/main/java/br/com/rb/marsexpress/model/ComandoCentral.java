@@ -74,8 +74,7 @@ public class ComandoCentral {
 		for(int i = 1; i < instrucoes.size(); i++){
 			if(i % 2 != 0){
 				posicao = Posicao.build(instrucoes.get(i).trim());
-			} 
-			else {
+			} else {
 				comandos.clear();
 				char itens[] = instrucoes.get(i).trim().toCharArray();
 				comandos = transformarEmComandos(itens);
