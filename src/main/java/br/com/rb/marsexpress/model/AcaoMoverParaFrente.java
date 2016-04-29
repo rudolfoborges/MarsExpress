@@ -23,7 +23,6 @@ public class AcaoMoverParaFrente implements Acao{
 		else if(direcao.equals(Direcao.W)) {
 			x-=1;
 		}
-		
 		return new Posicao(x, y, direcao);
 	}
 
