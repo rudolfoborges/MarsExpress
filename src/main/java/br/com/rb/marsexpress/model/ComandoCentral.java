@@ -1,5 +1,6 @@
 package br.com.rb.marsexpress.model;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -59,38 +60,32 @@ public class ComandoCentral {
 	}
 
 	public void receberInstrucoesGerais(InputStream in, OutputStream out){
-		try {
-			List<String> instrucoes = separarInstrucoes(in);
-			
-			if(instrucoes.size() < 3){
-				throw new IllegalArgumentException("As Instruções Gerais não foram devidamente formatadas");
-			}
-			
-			Planalto planalto = Planalto.build(instrucoes.get(0).trim());
-			
-			Posicao posicao = null;
-			List<Comando> comandos = new ArrayList<Comando>();
-			
-			for(int i = 1; i < instrucoes.size(); i++){
-				if(i % 2 != 0){
-					posicao = Posicao.build(instrucoes.get(i).trim());
-				} 
-				else {
-					comandos.clear();
-					char itens[] = instrucoes.get(i).trim().toCharArray();
-					comandos = transformarEmComandos(itens);
-					
-					Sonda sonda = criarNovaSonda();
-					lancarSonda(sonda, planalto, posicao);
-					enviarListaDeComandos(sonda, comandos);
-					out.write(String.format("%s \n", sonda.informarPosicao().toString()).getBytes());
-				}
+		List<String> instrucoes = separarInstrucoes(in);
+		
+		if(instrucoes.size() < 3){
+			throw new IllegalArgumentException("As Instruções Gerais não foram devidamente formatadas");
+		}
+		
+		Planalto planalto = Planalto.build(instrucoes.get(0).trim());
+		
+		Posicao posicao = null;
+		List<Comando> comandos = new ArrayList<Comando>();
+		
+		for(int i = 1; i < instrucoes.size(); i++){
+			if(i % 2 != 0){
+				posicao = Posicao.build(instrucoes.get(i).trim());
+			} 
+			else {
+				comandos.clear();
+				char itens[] = instrucoes.get(i).trim().toCharArray();
+				comandos = transformarEmComandos(itens);
 				
+				Sonda sonda = criarNovaSonda();
+				lancarSonda(sonda, planalto, posicao);
+				enviarListaDeComandos(sonda, comandos);
+				formatarSaida(sonda, out);
 			}
 			
-			out.close();
-		} catch(Exception ex){
-			throw new IllegalArgumentException(ex.getMessage(), ex);
 		}
 	}
 	
@@ -102,6 +97,14 @@ public class ComandoCentral {
 		}
 		scanner.close();
 		return instrucoes;
+	}
+	
+	private void formatarSaida(Sonda sonda, OutputStream out){
+		try {
+			out.write(String.format("%s \n", sonda.informarPosicao().toString()).getBytes());
+		} catch (IOException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
 	}
 	
 }
