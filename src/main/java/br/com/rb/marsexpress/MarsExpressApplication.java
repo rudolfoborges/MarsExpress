@@ -8,12 +8,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import br.com.rb.marsexpress.service.ComandoCentralService;
+import br.com.rb.marsexpress.service.NasaService;
 
 @SpringBootApplication
 public class MarsExpressApplication implements CommandLineRunner {
 
-	@Autowired ComandoCentralService comandoCentral;
+	@Autowired NasaService nasaService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(MarsExpressApplication.class, args);
@@ -22,7 +22,7 @@ public class MarsExpressApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		InputStream in = MarsExpressApplication.class.getResourceAsStream("instrucoes.me");
 		OutputStream out = System.out;
-		comandoCentral.receberInstrucoesGerais(in, out);
+		nasaService.receberInstrucoesGerais(in, out);
 		out.close();
 	}
 	

@@ -16,21 +16,15 @@ import br.com.rb.marsexpress.model.Planalto;
 import br.com.rb.marsexpress.model.Posicao;
 import br.com.rb.marsexpress.model.Sonda;
 
-/**
- * I am Houston. :)
- * @author rudolfoborges
- *
- */
 @Service
-public class ComandoCentralService {
+public class NasaService {
 
 	private static final String[] SONDAS = {"Spirit", "Opportunity", "Curiosity", "Mars Pathfinder", "Viking", "ExoMars"};
 	private int sondasEnviadas = 0;
 
-	private Map<Integer,Sonda> sondas = new HashMap<Integer,Sonda>();
+	private Map<Integer,Sonda> sondas = new HashMap<Integer, Sonda>();
 
 	public Sonda criarNovaSonda(){
-
 		if(sondasEnviadas > (SONDAS.length - 1)){
 			throw new IllegalArgumentException("A verba do projeto Mars Express chegou ao fim. Lamentamos não ter encontrado nada até agora!");
 		}
@@ -87,7 +81,7 @@ public class ComandoCentralService {
 				Sonda sonda = criarNovaSonda();
 				lancarSonda(sonda, planalto, posicao);
 				enviarListaDeComandos(sonda, comandos);
-				formatarSaida(sonda, out);
+				relatorioDePosicao(sonda, out);
 			}
 			
 		}
@@ -103,7 +97,7 @@ public class ComandoCentralService {
 		return instrucoes;
 	}
 	
-	private void formatarSaida(Sonda sonda, OutputStream out){
+	private void relatorioDePosicao(Sonda sonda, OutputStream out){
 		try {
 			out.write(String.format("Sonda %s - %s \n",sonda.getNome(), sonda.informarPosicao().toString()).getBytes());
 		} catch (IOException e) {
