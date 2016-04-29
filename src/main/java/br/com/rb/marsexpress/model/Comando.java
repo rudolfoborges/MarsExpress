@@ -22,7 +22,7 @@ public enum Comando {
 		return acao;
 	}
 	
-	public boolean verificarComando(String comando){
+	public static boolean verificarComando(String comando){
 		try {
 			valueOf(comando);
 			return true;
