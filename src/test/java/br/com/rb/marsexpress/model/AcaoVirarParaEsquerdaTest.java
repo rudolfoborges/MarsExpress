@@ -1,18 +1,12 @@
 package br.com.rb.marsexpress.model;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 
 public class AcaoVirarParaEsquerdaTest {
 
-	private Acao acao = null;
-	
-	@Before
-	public void before(){
-		acao = new AcaoVirarParaEsquerda();
-	}
+	private Acao acao = new AcaoVirarParaEsquerda();
 	
 	
 	@Test
