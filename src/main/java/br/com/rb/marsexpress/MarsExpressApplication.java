@@ -1,6 +1,7 @@
 package br.com.rb.marsexpress;
 
 import java.io.InputStream;
+import java.io.OutputStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -20,7 +21,9 @@ public class MarsExpressApplication implements CommandLineRunner {
 	
 	public void run(String... args) throws Exception {
 		InputStream in = MarsExpressApplication.class.getResourceAsStream("instrucoes.me");
-		comandoCentral.receberInstrucoesGerais(in, System.out);
+		OutputStream out = System.out;
+		comandoCentral.receberInstrucoesGerais(in, out);
+		out.close();
 	}
 	
 }

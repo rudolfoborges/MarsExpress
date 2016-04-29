@@ -100,7 +100,7 @@ public class ComandoCentral {
 	
 	private void formatarSaida(Sonda sonda, OutputStream out){
 		try {
-			out.write(String.format("%s \n", sonda.informarPosicao().toString()).getBytes());
+			out.write(String.format("Sonda %s - %s \n",sonda.getNome(), sonda.informarPosicao().toString()).getBytes());
 		} catch (IOException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		}

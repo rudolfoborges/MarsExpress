@@ -39,6 +39,10 @@ public class Sonda {
 		return numeroDeSerie;
 	}
 	
+	public String getNome(){
+		return nome;
+	}
+	
 	public String toString() {
 		return String.format("Eu sou a sonda %s. O planeta vermelho é meu provável destino.", nome);
 	}
