@@ -11,6 +11,14 @@ public class Posicao {
 		this.direcao = direcao;
 	}
 	
+	public static Posicao build(String instrucao){
+		String xyDirecao[] = instrucao.split(" ");
+		int x = Integer.parseInt(xyDirecao[0].trim());
+		int y = Integer.parseInt(xyDirecao[1].trim());
+		Direcao direcao = Direcao.valueOf(xyDirecao[2].trim());
+		return new Posicao(x, y, direcao);
+	}
+	
 	public int getX() {
 		return x;
 	}
