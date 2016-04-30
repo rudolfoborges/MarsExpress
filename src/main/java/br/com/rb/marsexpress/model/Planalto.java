@@ -9,6 +9,10 @@ public class Planalto {
 	}
 	
 	public boolean verificarPosicao(Posicao posicao){
+		if(posicao.getX() < 0 || posicao.getY() < 0){
+			return false;
+		}
+		
 		if(posicao.getX() > getX() || posicao.getY() > getY()){
 			return false;
 		}
