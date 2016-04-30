@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import br.com.rb.marsexpress.service.NasaService;
+import br.com.rb.marsexpress.util.DecodificadorDeMensagemTexto;
 
 @SpringBootApplication
 public class MarsExpressApplication implements CommandLineRunner {
@@ -22,7 +23,7 @@ public class MarsExpressApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		InputStream in = MarsExpressApplication.class.getResourceAsStream("instrucoes.me");
 		OutputStream out = System.out;
-		nasaService.receberInstrucoesGerais(in, out);
+		nasaService.receberInstrucoesGerais(in, out, new DecodificadorDeMensagemTexto());
 		out.close();
 	}
 	

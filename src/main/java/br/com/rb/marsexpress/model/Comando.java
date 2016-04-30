@@ -1,8 +1,5 @@
 package br.com.rb.marsexpress.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public enum Comando {
 
 	L("L", new AcaoVirarParaEsquerda()),
@@ -32,13 +29,5 @@ public enum Comando {
 		} catch (IllegalArgumentException ex){
 			return false;
 		}
-	}
-	
-	public static List<Comando> listaDeComandos(char[] itens){
-		List<Comando> comandos = new ArrayList<Comando>();
-		for (char c : itens) {
-			comandos.add(Comando.valueOf(String.valueOf(c)));
-		}
-		return comandos;
 	}
 }

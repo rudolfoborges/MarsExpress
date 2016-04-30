@@ -14,6 +14,7 @@ import br.com.rb.marsexpress.model.Direcao;
 import br.com.rb.marsexpress.model.Planalto;
 import br.com.rb.marsexpress.model.Posicao;
 import br.com.rb.marsexpress.model.Sonda;
+import br.com.rb.marsexpress.util.DecodificadorDeMensagemTexto;
 
 public class NasaServiceTest {
 
@@ -28,14 +29,14 @@ public class NasaServiceTest {
 	public void testCriarNovasSondas(){
 		for(int i = 1; i < 7; i++){
 			Sonda sonda = nasaService.criarNovaSonda();
-			Assert.assertTrue(i == sonda.getNumeroDeSerie());
+			Assert.assertEquals(i, sonda.getNumeroDeSerie());
 		}
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testCriacaoDeSondasEmExcesso() {
 		for(int i = 1; i < 8; i++){
-			Sonda sonda = nasaService.criarNovaSonda();
+			nasaService.criarNovaSonda();
 		}
 	}
 	
@@ -77,13 +78,13 @@ public class NasaServiceTest {
 		ByteArrayInputStream in = new ByteArrayInputStream(instrucoes.toString().getBytes());
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		
-		nasaService.receberInstrucoesGerais(in, out);
+		nasaService.receberInstrucoesGerais(in, out, new DecodificadorDeMensagemTexto());
 		
 		StringBuilder relatorioEsperado = new StringBuilder()
 				.append("Sonda Spirit - 1 3 N \n") 
 				.append("Sonda Opportunity - 5 1 E \n");
 		
-		Assert.assertTrue(relatorioEsperado.toString().equals(new String(out.toByteArray())));
+		Assert.assertEquals(relatorioEsperado.toString(), new String(out.toByteArray()));
 		
 		out.close();
 		
@@ -98,7 +99,7 @@ public class NasaServiceTest {
 		ByteArrayInputStream in = new ByteArrayInputStream(instrucoes.toString().getBytes());
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		
-		nasaService.receberInstrucoesGerais(in, out);
+		nasaService.receberInstrucoesGerais(in, out, new DecodificadorDeMensagemTexto());
 		
 		out.close();
 		

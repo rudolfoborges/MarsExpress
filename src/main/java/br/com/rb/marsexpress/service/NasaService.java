@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 import org.springframework.stereotype.Service;
 
@@ -15,6 +14,7 @@ import br.com.rb.marsexpress.model.Comando;
 import br.com.rb.marsexpress.model.Planalto;
 import br.com.rb.marsexpress.model.Posicao;
 import br.com.rb.marsexpress.model.Sonda;
+import br.com.rb.marsexpress.util.DecodificadorDeMensagem;
 
 @Service
 public class NasaService {
@@ -48,25 +48,25 @@ public class NasaService {
 		sonda.receberComando(comando);
 	}
 	
-	public void receberInstrucoesGerais(InputStream in, OutputStream out){
-		List<String> instrucoes = separarInstrucoes(in);
+	public void receberInstrucoesGerais(InputStream in, OutputStream out, DecodificadorDeMensagem decodificador){
+		List<String> instrucoes = decodificador.decodificarInstrucoesGerais(in);
 		
 		if(instrucoes.size() < 3){
 			throw new IllegalArgumentException("As Instruções Gerais não foram devidamente formatadas");
 		}
 		
-		Planalto planalto = Planalto.build(instrucoes.get(0).trim());
+		Planalto planalto = decodificador.decodificarPlanalto(instrucoes.get(0).trim());
 		
 		Posicao posicao = null;
 		List<Comando> comandos = new ArrayList<Comando>();
 		
 		for(int i = 1; i < instrucoes.size(); i++){
 			if(i % 2 != 0){
-				posicao = Posicao.build(instrucoes.get(i).trim());
+				posicao = decodificador.decodificarPosicao(instrucoes.get(i).trim());
 			} else {
 				comandos.clear();
-				char itens[] = instrucoes.get(i).trim().toCharArray();
-				comandos = Comando.listaDeComandos(itens);
+				
+				comandos.addAll(decodificador.decodificarComandos(instrucoes.get(i).trim()));
 				
 				Sonda sonda = criarNovaSonda();
 				lancarSonda(sonda, planalto, posicao);
@@ -75,16 +75,6 @@ public class NasaService {
 			}
 			
 		}
-	}
-	
-	private List<String> separarInstrucoes(InputStream in){
-		List<String> instrucoes = new ArrayList<String>();
-		Scanner scanner = new Scanner(in);
-		while(scanner.hasNext()){
-			instrucoes.add(scanner.nextLine());
-		}
-		scanner.close();
-		return instrucoes;
 	}
 	
 	private void relatorioDePosicao(Sonda sonda, OutputStream out){
