@@ -12,8 +12,8 @@ import br.com.rb.marsexpress.model.Posicao;
 
 public class DecodificadorDeMensagemTexto implements DecodificadorDeMensagem {
 
-	public Planalto decodificarPlanalto(String mensagem) {
-		String[] xy = mensagem.split(" ");
+	public Planalto decodificarPlanalto(List<String> instrucoes) {
+		String[] xy = instrucoes.get(0).split(" ");
 		int x = Integer.parseInt(xy[0].trim());
 		int y = Integer.parseInt(xy[1].trim());
 		return new Planalto(x, y);
@@ -30,8 +30,8 @@ public class DecodificadorDeMensagemTexto implements DecodificadorDeMensagem {
 	public List<Comando> decodificarComandos(String mensagem) {
 		char itens[] = mensagem.trim().toCharArray();
 		List<Comando> comandos = new ArrayList<Comando>();
-		for (char c : itens) {
-			comandos.add(Comando.valueOf(String.valueOf(c)));
+		for (char comando : itens) {
+			comandos.add(Comando.valueOf(String.valueOf(comando)));
 		}
 		return comandos;
 	}
@@ -40,7 +40,7 @@ public class DecodificadorDeMensagemTexto implements DecodificadorDeMensagem {
 		List<String> instrucoes = new ArrayList<String>();
 		Scanner scanner = new Scanner(in);
 		while(scanner.hasNext()){
-			instrucoes.add(scanner.nextLine());
+			instrucoes.add(scanner.nextLine().trim());
 		}
 		scanner.close();
 		return instrucoes;

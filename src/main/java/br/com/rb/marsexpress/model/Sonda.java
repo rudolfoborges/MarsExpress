@@ -4,13 +4,13 @@ import br.com.rb.marsexpress.exception.HoustonIHaveAProblemException;
 
 public class Sonda {
 
-	private int numeroDeSerie;
+	private int lancamento;
 	private String nome;
 	private Planalto planalto;
 	private Posicao posicao;
 	
-	public Sonda(int numeroDeSerie, String nome){
-		this.numeroDeSerie = numeroDeSerie;
+	public Sonda(int lancamento, String nome){
+		this.lancamento = lancamento;
 		this.nome = nome;
 	}
 	
@@ -35,16 +35,12 @@ public class Sonda {
 		return posicao;
 	}
 	
-	public int getNumeroDeSerie(){
-		return numeroDeSerie;
+	public int getLancamento(){
+		return lancamento;
 	}
 	
 	public String getNome(){
 		return nome;
-	}
-	
-	public String toString() {
-		return String.format("Eu sou a sonda %s. O planeta vermelho é meu provável destino.", nome);
 	}
 	
 }

@@ -9,7 +9,8 @@ import br.com.rb.marsexpress.model.Posicao;
 
 public interface DecodificadorDeMensagem {
 
-	Planalto decodificarPlanalto(String mensagem);
+	Planalto decodificarPlanalto(List<String> instrucoes);
+	
 	Posicao decodificarPosicao(String mensagem);
 	List<Comando> decodificarComandos(String mensagem);
 	
