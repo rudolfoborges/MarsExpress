@@ -59,14 +59,14 @@ public class NasaResource {
 		List<Comando> comandos = decodificador.decodificarComandos(request.get("comandos"));
 		Sonda sonda = nasaService.obterSondaLancanda(sondaId);
 		nasaService.enviarListaDeComandos(sonda, comandos);
-		Posicao posicao = sonda.informarPosicao();
+		Posicao posicao = nasaService.informarPosicao(sonda);
 		return new ResponseEntity<Posicao>(posicao, HttpStatus.OK);
 	}
 	
 	@RequestMapping(path="sonda/{sonda}/posicao", method=RequestMethod.GET)
 	public ResponseEntity<Posicao> getSondaPosicao(@PathVariable("sonda") int sondaId){
 		Sonda sonda = nasaService.obterSondaLancanda(sondaId);
-		Posicao posicao = sonda.informarPosicao();
+		Posicao posicao = nasaService.informarPosicao(sonda);
 		return new ResponseEntity<Posicao>(posicao, HttpStatus.OK);
 	}
 

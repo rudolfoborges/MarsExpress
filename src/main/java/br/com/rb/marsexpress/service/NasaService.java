@@ -59,6 +59,10 @@ public class NasaService {
 		return sonda;
 	}
 	
+	public Posicao informarPosicao(Sonda sonda){
+		return sonda.informarPosicao();
+	}
+	
 	public List<Sonda> obterSondasLancadas(){
 		List<Sonda> sondas = new ArrayList<Sonda>();
 		lancamentos.forEach((i, sonda) -> {
