@@ -36,12 +36,8 @@ public class NasaService {
 		return sonda;
 	}
 	
-	public List<Comando> transformarEmComandos(char[] instrucoes){
-		List<Comando> comandos = new ArrayList<Comando>();
-		for (char c : instrucoes) {
-			comandos.add(Comando.valueOf(String.valueOf(c)));
-		}
-		return comandos;
+	public void lancarSonda(Sonda sonda, Planalto planalto, Posicao posicao){
+		sonda.aterrissar(planalto, posicao);
 	}
 	
 	public void enviarListaDeComandos(Sonda sonda, List<Comando> comandos){
@@ -52,10 +48,6 @@ public class NasaService {
 		sonda.receberComando(comando);
 	}
 	
-	public void lancarSonda(Sonda sonda, Planalto planalto, Posicao posicao){
-		sonda.aterrissar(planalto, posicao);
-	}
-
 	public void receberInstrucoesGerais(InputStream in, OutputStream out){
 		List<String> instrucoes = separarInstrucoes(in);
 		
@@ -74,7 +66,7 @@ public class NasaService {
 			} else {
 				comandos.clear();
 				char itens[] = instrucoes.get(i).trim().toCharArray();
-				comandos = transformarEmComandos(itens);
+				comandos = Comando.listaDeComandos(itens);
 				
 				Sonda sonda = criarNovaSonda();
 				lancarSonda(sonda, planalto, posicao);

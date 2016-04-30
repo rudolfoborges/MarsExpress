@@ -1,7 +1,4 @@
-package br.com.rb.marsexpress.model.acao;
-
-import br.com.rb.marsexpress.model.Direcao;
-import br.com.rb.marsexpress.model.Posicao;
+package br.com.rb.marsexpress.model;
 
 public class AcaoMoverParaFrente implements Acao{
 

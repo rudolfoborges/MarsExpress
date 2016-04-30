@@ -1,9 +1,7 @@
 package br.com.rb.marsexpress.model;
 
-import br.com.rb.marsexpress.model.acao.Acao;
-import br.com.rb.marsexpress.model.acao.AcaoMoverParaFrente;
-import br.com.rb.marsexpress.model.acao.AcaoVirarParaDireita;
-import br.com.rb.marsexpress.model.acao.AcaoVirarParaEsquerda;
+import java.util.ArrayList;
+import java.util.List;
 
 public enum Comando {
 
@@ -34,5 +32,13 @@ public enum Comando {
 		} catch (IllegalArgumentException ex){
 			return false;
 		}
+	}
+	
+	public static List<Comando> listaDeComandos(char[] itens){
+		List<Comando> comandos = new ArrayList<Comando>();
+		for (char c : itens) {
+			comandos.add(Comando.valueOf(String.valueOf(c)));
+		}
+		return comandos;
 	}
 }

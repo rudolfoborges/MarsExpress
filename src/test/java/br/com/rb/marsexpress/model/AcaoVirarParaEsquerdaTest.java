@@ -1,13 +1,13 @@
-package br.com.rb.marsexpress.model.acao;
+package br.com.rb.marsexpress.model;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.rb.marsexpress.model.Acao;
+import br.com.rb.marsexpress.model.AcaoVirarParaEsquerda;
 import br.com.rb.marsexpress.model.Direcao;
 import br.com.rb.marsexpress.model.Posicao;
-import br.com.rb.marsexpress.model.acao.Acao;
-import br.com.rb.marsexpress.model.acao.AcaoVirarParaEsquerda;
 
 
 public class AcaoVirarParaEsquerdaTest {
