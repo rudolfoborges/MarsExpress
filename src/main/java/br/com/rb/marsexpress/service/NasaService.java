@@ -45,9 +45,7 @@ public class NasaService {
 	}
 	
 	public void enviarListaDeComandos(Sonda sonda, List<Comando> comandos){
-		for (Comando comando : comandos) {
-			enviarComando(sonda, comando);
-		}
+		comandos.forEach(comando -> enviarComando(sonda, comando));
 	}
 	
 	public void enviarComando(Sonda sonda, Comando comando){
