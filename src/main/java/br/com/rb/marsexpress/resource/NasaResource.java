@@ -1,7 +1,6 @@
 package br.com.rb.marsexpress.resource;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,9 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.rb.marsexpress.model.Comando;
-import br.com.rb.marsexpress.model.Planalto;
 import br.com.rb.marsexpress.model.Posicao;
 import br.com.rb.marsexpress.model.Sonda;
+import br.com.rb.marsexpress.resource.request.ProcedimentoPadraoRequest;
+import br.com.rb.marsexpress.resource.request.ReceberComandoRequest;
 import br.com.rb.marsexpress.service.NasaService;
 import br.com.rb.marsexpress.util.DecodificadorDeMensagem;
 
@@ -31,7 +31,6 @@ public class NasaResource {
 	public NasaResource(NasaService nasaService, @Qualifier("rest") DecodificadorDeMensagem decodificador){
 		this.nasaService = nasaService;
 		this.decodificador = decodificador;
-		
 	}
 	
 	@RequestMapping(path="sonda", method=RequestMethod.GET)
@@ -47,16 +46,14 @@ public class NasaResource {
 	}
 	
 	@RequestMapping(path="sonda", method=RequestMethod.POST)
-	public ResponseEntity<Sonda> postSonda(@RequestBody Map<String, Object> request){
-		Planalto planalto = (Planalto) request.get("planalto");
-		Posicao posicao = (Posicao) request.get("posicao");
-		Sonda sonda = nasaService.procedimentoPadrao(planalto, posicao, null);
+	public ResponseEntity<Sonda> postProcedimentoPadrao(@RequestBody ProcedimentoPadraoRequest request){
+		Sonda sonda = nasaService.procedimentoPadrao(request.getPlanalto(), request.getPosicao(), null);
 		return new ResponseEntity<Sonda>(sonda, HttpStatus.OK);
 	}
 	
 	@RequestMapping(path="sonda/{sonda}", method=RequestMethod.PUT)
-	public ResponseEntity<Posicao> putReceberComandos(@PathVariable("sonda") int sondaId, @RequestBody Map<String, String> request){
-		List<Comando> comandos = decodificador.decodificarComandos(request.get("comandos"));
+	public ResponseEntity<Posicao> putReceberComandos(@PathVariable("sonda") int sondaId, @RequestBody ReceberComandoRequest request){
+		List<Comando> comandos = decodificador.decodificarComandos(request.getComandos());
 		Sonda sonda = nasaService.obterSondaLancanda(sondaId);
 		nasaService.enviarListaDeComandos(sonda, comandos);
 		Posicao posicao = nasaService.informarPosicao(sonda);

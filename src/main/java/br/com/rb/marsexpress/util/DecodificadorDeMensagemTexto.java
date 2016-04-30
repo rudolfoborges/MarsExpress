@@ -32,8 +32,8 @@ public class DecodificadorDeMensagemTexto implements DecodificadorDeMensagem {
 		return new Posicao(x, y, direcao);
 	}
 	
-	public List<Comando> decodificarComandos(String mensagem) {
-		char itens[] = mensagem.trim().toCharArray();
+	public List<Comando> decodificarComandos(Object mensagem) {
+		char itens[] = ((String)mensagem).trim().toCharArray();
 		List<Comando> comandos = new ArrayList<Comando>();
 		for (char comando : itens) {
 			comandos.add(Comando.valueOf(String.valueOf(comando)));

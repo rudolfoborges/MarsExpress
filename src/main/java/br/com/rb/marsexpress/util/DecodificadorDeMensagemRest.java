@@ -1,6 +1,7 @@
 package br.com.rb.marsexpress.util;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,22 +15,24 @@ import br.com.rb.marsexpress.model.Posicao;
 @Qualifier("rest")
 public class DecodificadorDeMensagemRest implements DecodificadorDeMensagem {
 
-	@Override
 	public Planalto decodificarPlanalto(List<String> instrucoes) {
 		throw new UnsupportedOperationException("O método não é suportado");
 	}
 
-	@Override
 	public Posicao decodificarPosicao(String mensagem) {
 		throw new UnsupportedOperationException("O método não é suportado");
 	}
 
-	@Override
-	public List<Comando> decodificarComandos(String mensagem) {
-		throw new UnsupportedOperationException("O método não é suportado");
+	@SuppressWarnings("unchecked")
+	public List<Comando> decodificarComandos(Object mensagem) {
+		List<Comando> comandos = new ArrayList<Comando>();
+		List<String> itens = (List<String>) mensagem;
+		for (String comando : itens) {
+			comandos.add(Comando.valueOf(comando));
+		}
+		return comandos;
 	}
 
-	@Override
 	public List<String> decodificarInstrucoesGerais(InputStream in) {
 		throw new UnsupportedOperationException("O método não é suportado");
 	}

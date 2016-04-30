@@ -12,7 +12,7 @@ public interface DecodificadorDeMensagem {
 	Planalto decodificarPlanalto(List<String> instrucoes);
 	
 	Posicao decodificarPosicao(String mensagem);
-	List<Comando> decodificarComandos(String mensagem);
+	List<Comando> decodificarComandos(Object mensagem);
 	
 	List<String> decodificarInstrucoesGerais(InputStream in);
 }
