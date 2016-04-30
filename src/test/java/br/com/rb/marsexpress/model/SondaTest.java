@@ -44,12 +44,6 @@ public class SondaTest {
 		sonda.aterrissar(planalto, new Posicao(6, 6, Direcao.N));
 	}
 	
-	@Test
-	public void testToString(){
-		Sonda sonda = new Sonda(1, SONDA_NOME);
-		String esperado = String.format("Eu sou a sonda %s. O planeta vermelho é meu provável destino.", SONDA_NOME);
-		Assert.assertTrue(sonda.toString().equals(esperado));
-	}
 	
 	@Test(expected=HoustonIHaveAProblemException.class)
 	public void testMovimentarForaDoPlanalto(){
@@ -68,7 +62,9 @@ public class SondaTest {
 		
 		comandos.forEach(c -> sonda.receberComando(Comando.valueOf(c)));
 		
-		Assert.assertTrue(sonda.informarPosicao().toString().equals("1 3 N"));
+		Assert.assertEquals(sonda.informarPosicao().getX(), 1);
+		Assert.assertEquals(sonda.informarPosicao().getY(), 3);
+		Assert.assertEquals(sonda.informarPosicao().getDirecao().getValue(), "N");
 	}
 	
 	@Test
@@ -79,6 +75,8 @@ public class SondaTest {
 		
 		comandos.forEach(c -> sonda.receberComando(Comando.valueOf(c)));
 		
-		Assert.assertTrue(sonda.informarPosicao().toString().equals("5 1 E"));
+		Assert.assertEquals(sonda.informarPosicao().getX(), 5);
+		Assert.assertEquals(sonda.informarPosicao().getY(), 1);
+		Assert.assertEquals(sonda.informarPosicao().getDirecao().getValue(), "E");
 	}
 }

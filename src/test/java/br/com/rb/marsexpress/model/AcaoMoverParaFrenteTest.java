@@ -24,7 +24,8 @@ public class AcaoMoverParaFrenteTest {
 		Posicao posicao = new Posicao(1, 1, Direcao.N);
 		Posicao novaPosicao = acao.executar(posicao);
 		
-		Assert.assertTrue(novaPosicao.getX() == 1 && novaPosicao.getY() == 2);
+		Assert.assertEquals(novaPosicao.getX(), 1);
+		Assert.assertEquals(novaPosicao.getY(), 2);
 	}
 	
 	@Test
@@ -32,7 +33,8 @@ public class AcaoMoverParaFrenteTest {
 		Posicao posicao = new Posicao(1, 1, Direcao.S);
 		Posicao novaPosicao = acao.executar(posicao);
 		
-		Assert.assertTrue(novaPosicao.getX() == 1 && novaPosicao.getY() == 0);
+		Assert.assertEquals(novaPosicao.getX(), 1);
+		Assert.assertEquals(novaPosicao.getY(), 0);
 	}
 	
 	@Test
@@ -40,7 +42,8 @@ public class AcaoMoverParaFrenteTest {
 		Posicao posicao = new Posicao(1, 1, Direcao.E);
 		Posicao novaPosicao = acao.executar(posicao);
 		
-		Assert.assertTrue(novaPosicao.getX() == 2 && novaPosicao.getY() == 1);
+		Assert.assertEquals(novaPosicao.getX(), 2);
+		Assert.assertEquals(novaPosicao.getY(), 1);
 	}
 	
 	@Test
@@ -48,6 +51,7 @@ public class AcaoMoverParaFrenteTest {
 		Posicao posicao = new Posicao(1, 1, Direcao.W);
 		Posicao novaPosicao = acao.executar(posicao);
 		
-		Assert.assertTrue(novaPosicao.getX() == 0 && novaPosicao.getY() == 1);
+		Assert.assertEquals(novaPosicao.getX(), 0);
+		Assert.assertEquals(novaPosicao.getY(), 1);
 	}
 }

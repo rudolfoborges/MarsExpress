@@ -33,5 +33,4 @@ public enum Direcao {
 		return this.getValue().equals(direcao.getValue());
 	}
 	
-	
 }
