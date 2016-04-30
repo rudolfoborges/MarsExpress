@@ -5,11 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import br.com.rb.marsexpress.model.Comando;
 import br.com.rb.marsexpress.model.Direcao;
 import br.com.rb.marsexpress.model.Planalto;
 import br.com.rb.marsexpress.model.Posicao;
 
+@Component
+@Qualifier("txt")
 public class DecodificadorDeMensagemTexto implements DecodificadorDeMensagem {
 
 	public Planalto decodificarPlanalto(List<String> instrucoes) {

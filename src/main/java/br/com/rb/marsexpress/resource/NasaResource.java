@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,20 +13,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.rb.marsexpress.model.Comando;
 import br.com.rb.marsexpress.model.Planalto;
 import br.com.rb.marsexpress.model.Posicao;
 import br.com.rb.marsexpress.model.Sonda;
 import br.com.rb.marsexpress.service.NasaService;
+import br.com.rb.marsexpress.util.DecodificadorDeMensagem;
 
 @RestController
 @RequestMapping("api/nasa")
 public class NasaResource {
 
-	private NasaService nasaService;
+	private final NasaService nasaService;
+	private final DecodificadorDeMensagem decodificador;
 
 	@Autowired
-	public NasaResource(NasaService nasaService){
+	public NasaResource(NasaService nasaService, @Qualifier("rest") DecodificadorDeMensagem decodificador){
 		this.nasaService = nasaService;
+		this.decodificador = decodificador;
+		
 	}
 	
 	@RequestMapping(path="sonda", method=RequestMethod.GET)
@@ -49,9 +55,12 @@ public class NasaResource {
 	}
 	
 	@RequestMapping(path="sonda/{sonda}", method=RequestMethod.PUT)
-	public ResponseEntity<Posicao> putReceberComandos(@PathVariable("sonda") int sondaId, List<String> comandos){
+	public ResponseEntity<Posicao> putReceberComandos(@PathVariable("sonda") int sondaId, @RequestBody Map<String, String> request){
+		List<Comando> comandos = decodificador.decodificarComandos(request.get("comandos"));
 		Sonda sonda = nasaService.obterSondaLancanda(sondaId);
-		return null;
+		nasaService.enviarListaDeComandos(sonda, comandos);
+		Posicao posicao = sonda.informarPosicao();
+		return new ResponseEntity<Posicao>(posicao, HttpStatus.OK);
 	}
 	
 	@RequestMapping(path="sonda/{sonda}/posicao", method=RequestMethod.GET)
