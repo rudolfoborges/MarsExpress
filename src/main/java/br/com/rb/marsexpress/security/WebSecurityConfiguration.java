@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
-
+	
 	private @Autowired CustomUserDetailsService userDetailsService;
 	
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
