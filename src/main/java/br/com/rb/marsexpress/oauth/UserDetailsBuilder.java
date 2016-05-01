@@ -1,4 +1,4 @@
-package br.com.rb.marsexpress.security;
+package br.com.rb.marsexpress.oauth;
 
 import org.springframework.security.core.userdetails.UserDetails;
 

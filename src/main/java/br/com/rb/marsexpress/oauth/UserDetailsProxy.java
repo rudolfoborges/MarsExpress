@@ -1,4 +1,4 @@
-package br.com.rb.marsexpress.security;
+package br.com.rb.marsexpress.oauth;
 
 import java.util.ArrayList;
 import java.util.Collection;
