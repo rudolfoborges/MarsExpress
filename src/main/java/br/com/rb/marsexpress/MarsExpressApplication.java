@@ -13,8 +13,8 @@ import br.com.rb.marsexpress.util.DecodificadorDeMensagemTexto;
 
 @SpringBootApplication
 public class MarsExpressApplication implements CommandLineRunner {
-
-	@Autowired NasaService nasaService;
+	
+	private @Autowired NasaService nasaService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(MarsExpressApplication.class, args);
