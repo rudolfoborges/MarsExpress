@@ -64,7 +64,7 @@ public class NasaServiceTest {
 		Posicao posicao = new Posicao(0,0,Direcao.N);
 		Sonda sonda = new Sonda(1, "Sonda Protótipo");
 		nasaService.lancarSonda(sonda, planalto, posicao);
-		nasaService.enviarListaDeComandos(sonda, Arrays.asList(Comando.L, Comando.M, Comando.L, Comando.M, Comando.L, Comando.L));
+		nasaService.enviarListaDeComandos(sonda, Arrays.asList(Comando.R, Comando.M, Comando.M));
 	}
 	
 	@Test

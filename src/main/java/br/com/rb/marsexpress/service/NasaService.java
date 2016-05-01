@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import br.com.rb.marsexpress.model.Comando;
 import br.com.rb.marsexpress.model.Planalto;
@@ -16,7 +16,7 @@ import br.com.rb.marsexpress.model.Posicao;
 import br.com.rb.marsexpress.model.Sonda;
 import br.com.rb.marsexpress.util.DecodificadorDeMensagem;
 
-@Service
+@Component
 public class NasaService {
 
 	private static final String[] SONDAS = {"Spirit", "Opportunity", "Curiosity", "Mars Pathfinder", "Viking", "ExoMars"};

@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.com.rb.marsexpress.repository.FuncionarioRepository;
+
 @Entity@Table(name="funcionario")
 public class Funcionario {
 
@@ -14,6 +16,18 @@ public class Funcionario {
 	private String email;
 	private String senha;
 	
+	public Funcionario() {}
+
+	public Funcionario(String nome, String email, String senha) {
+		super();
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+	}
+
+	public void salvar(FuncionarioRepository funcionarioRepository){
+		funcionarioRepository.save(this);
+	}
 	
 	@Id @GeneratedValue
 	public Long getId() {
