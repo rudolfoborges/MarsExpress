@@ -70,9 +70,7 @@
 })();
 'use strict';
 
-var models = {
-		
-};
+var models = {};
 
 (function(){
 	
