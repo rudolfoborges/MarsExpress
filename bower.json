@@ -24,6 +24,7 @@
     "animate.css": "^3.5.1",
     "devicon": "*",
     "angular-ui-router": "^0.2.18",
-    "angular-local-storage": "^0.2.7"
+    "angular-local-storage": "^0.2.7",
+    "angular-bootstrap": "^1.3.2"
   }
 }

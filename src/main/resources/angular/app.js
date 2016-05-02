@@ -39,6 +39,10 @@
 	
 	function run($rootScope, $anchorScroll){
 		
+		$rootScope.$on('$showModal', function(event, data) {
+			$rootScope.modal.message = data.message;
+		});
+		
 		$rootScope.apiURL = function(endpoint){
 			return 'api/' + endpoint;
 		};

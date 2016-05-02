@@ -9,12 +9,13 @@
      </select>
      
      <div class="console">
-     	<span>Teste do Console</span>
+     	<p ng-repeat="msg in ctrl.model.sonda.historico"> -># {{msg}}</p>
+     	<p> ->#</p>
      </div>
      
      <div class="acoes">
-     	<a class="btn btn-primary">Virar a Esquerda</a>
-     	<a class="btn btn-primary">Virar a Direita</a>
-     	<a class="btn btn-primary">Mover para Frente</a>
+     	<a class="btn btn-primary" ng-click="ctrl.virarParaEsquerda()">Virar a Esquerda</a>
+     	<a class="btn btn-primary" ng-click="ctrl.virarParaDireita()">Virar a Direita</a>
+     	<a class="btn btn-primary" ng-click="ctrl.moverParaFrente()">Mover para Frente</a>
      </div>
 </div>
