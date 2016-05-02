@@ -40,7 +40,9 @@
 	function run($rootScope, $anchorScroll){
 		
 		$rootScope.$on('$showModal', function(event, data) {
+			$rootScope.modal = {};
 			$rootScope.modal.message = data.message;
+			$('#modal').modal('show');
 		});
 		
 		$rootScope.apiURL = function(endpoint){
@@ -66,6 +68,7 @@
             },
             responseError: function(rejection) {
                 $log.error('Response error:', rejection);
+                $rootScope.$broadcast('$showModal', {message: rejection.data.message});
                 return $q.reject(rejection);
             }
         };
