@@ -3,7 +3,7 @@
 
   .console {
     width: 100%;
-    min-height: 300px;
+    min-height: 250px;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -16,4 +16,22 @@
        text-shadow: none;
     }
   }
+
+  .acoes {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+
+    .btn-primary {
+      display: inline-block;
+      background-color: #fff;
+      border: 1px solid #fff;
+      color: $bg-primary-color;
+      min-width: 200px;
+      margin-left: 10px;
+      text-shadow: none;
+      font-weight: 500;
+    }
+  }
+
 }

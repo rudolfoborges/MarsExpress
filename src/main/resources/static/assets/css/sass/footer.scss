@@ -1,0 +1,26 @@
+.footer {
+  width: 100%;
+  border-top: 1px solid $text-primary-color;
+  min-height: 150px;
+  text-align: center;
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
+
+    .copyright {
+      margin-top: 15px;
+      font-size: $font-size-sm;
+    }
+
+    ul {
+      margin-top: 10px;
+      font-size: 40px;
+
+        li.dev {
+          display: inline-block;
+          width: 70px;
+        }
+    }
+}
