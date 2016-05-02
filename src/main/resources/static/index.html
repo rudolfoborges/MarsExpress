@@ -27,7 +27,26 @@
 </head>
 <body ng-app="angular.me">
 	
-	<div ui-view autoscroll="false"></div>
+	<div class="container">
+		<nav class="navbar navbar-default navbar-static-top">
+		  <div class="container">
+		  	    <div class="navbar-header">
+	              <a class="title" href="#!/home"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Mars Express</a>
+	            </div>
+	            <ul class="nav navbar-nav navbar-right">
+	              <li><a href="#!/home">Home</a></li>
+	              <li><a href="../navbar-static-top/">Rudolfo Borges</a></li>
+	              <li><a href="../navbar-fixed-top/">Sobre o Desafio</a></li>
+	            </ul>
+		  </div>
+		</nav>
+		
+		<div class="view">
+			<div ui-view autoscroll="false"></div>
+		</div>
+	</div>
+	
+	
 	
 </body>
 </html>

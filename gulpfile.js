@@ -12,7 +12,7 @@ gulp.task('angular', function(){
 	return gulp
 			.src('src/main/resources/angular/**/*.js')
 			.pipe(concat('angular.app.js'))
-			.pipe(uglify())
+			//.pipe(uglify())
 			.pipe(gulp.dest('src/main/resources/static/'));
 });
 

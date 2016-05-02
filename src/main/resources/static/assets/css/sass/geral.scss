@@ -1,10 +1,39 @@
-html, body {
-    height: 100%;
-    background-color: #333;
-}
+$bg-primary-color: #333;
+$text-primary-color: rgba(255,255,255,.75);
+$font-size-lg: 26px;
+$font-size-md: 22px;
+$font-size-sm: 18px;
+$font-size-xs: 14px;
 
 body {
-    color: #fff;
-    text-align: center;
+    font-family: 'Open Sans',sans-serif;
+    font-size: $font-size-xs;
+    background-color: $bg-primary-color;
+    color: $text-primary-color;
     text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+
+.container {
+  max-width: 970px;
+}
+
+h1 {
+  font-size: $font-size-lg;
+}
+
+h2 {
+  font-size: $font-size-md;
+}
+
+h3 {
+  font-size: $font-size-sm;
+}
+
+h4 {
+  font-size: $font-size-xs;
+}
+
+.view {
+  margin: 30px 15px;
+  width: 100%;
 }

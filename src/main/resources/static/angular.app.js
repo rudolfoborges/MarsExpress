@@ -1,1 +1,114 @@
-!function(){"use strict";function r(r,e,o,t,n){r.html5Mode(!1).hashPrefix("!"),t.interceptors.push("$httpInterceptor"),n.setPrefix("me").setStorageType("sessionStorage").setNotify(!0,!0),e.state("home",{url:"/home",cache:!1,templateUrl:"home.html"}),o.otherwise("/home")}function e(r,e){r.$on("$locationChangeSuccess",function(){e()})}function o(r,e,o){return{request:function(r){return r},requestError:function(e){return o.error("Request error:",e),r.reject(e)},response:function(r){return r},responseError:function(e){return o.error("Response error:",e),r.reject(e)}}}angular.module("angular.me",["angular.me.views","angular.me.controllers","ui.router","LocalStorageModule"]).service("$httpInterceptor",["$q","$rootScope","$log",o]).config(["$locationProvider","$stateProvider","$urlRouterProvider","$httpProvider","localStorageServiceProvider",r]).run(["$rootScope","$anchorScroll",e]),angular.module("angular.me.controllers",[])}(),function(){"use strict";function r(r){}angular.module("angular.me.controllers").controller("HomeController",["$scope",r])}();
+(function(){
+	'use strict';
+	
+	angular
+		.module('angular.me', ['angular.me.views', 'angular.me.controllers', 'ui.router', 'LocalStorageModule'])
+		.service('$httpInterceptor', ['$q', '$rootScope', '$log', httpInterceptor])
+		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', 'localStorageServiceProvider', config])
+		.run(['$rootScope', '$anchorScroll', run]);
+	
+	angular
+		.module('angular.me.controllers', []);
+	
+	
+	function config($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider, localStorageServiceProvider) {
+		$locationProvider.html5Mode(false).hashPrefix('!');
+		
+		$httpProvider.interceptors.push('$httpInterceptor');
+		
+		localStorageServiceProvider
+			.setPrefix('me')
+			.setStorageType('sessionStorage')
+			.setNotify(true, true);
+		
+		$stateProvider
+			.state('home', {
+				url: '/home',
+		      	cache: false,
+		    	templateUrl: 'home.html',
+		    	controller: 'HomeController as ctrl',
+		    	resolve: {
+		    		Sondas: function($http, $rootScope){
+		    			return $http.get($rootScope.apiURL('nasa/sonda'));
+		    		}
+		    	}
+		    });
+		
+		$urlRouterProvider.otherwise('/home');
+	}
+	
+	function run($rootScope, $anchorScroll){
+		
+		$rootScope.apiURL = function(endpoint){
+			return 'api/' + endpoint;
+		};
+		
+		$rootScope.$on("$locationChangeSuccess", function() {
+            $anchorScroll();
+		});
+	}
+	
+	function httpInterceptor($q, $rootScope, $log){
+		return {
+            request: function(config) {
+                return config;
+            },
+            requestError: function(rejection) {
+                $log.error('Request error:', rejection);
+                return $q.reject(rejection);
+            },
+            response: function(response) {
+                return response;
+            },
+            responseError: function(rejection) {
+                $log.error('Response error:', rejection);
+                return $q.reject(rejection);
+            }
+        };
+	}
+	
+})();
+'use strict';
+
+var models = {
+		
+};
+
+(function(){
+	
+	models.Sonda = function(lancamento, nome){
+		this.nome = nome;
+		this.lancamento = lancamento;
+		this.historico = [];
+	};
+	
+})();
+(function(){
+	'use strict';
+	
+	angular
+		.module('angular.me.controllers')
+		.controller('HomeController', ['$scope', 'Sondas', HomeController]);
+		
+		
+	function HomeController($scope, Sondas){
+		var ctrl = this;
+		
+		ctrl.model = {
+			sonda: undefined
+		};
+		
+		ctrl.sondas = [];
+		
+		function _init(){
+			Sondas.data.forEach(function(i){
+				var sonda = new models.Sonda(i.lancamento, i.nome);
+				ctrl.sondas.push(sonda);
+			});
+		}
+		
+		_init();
+	}
+	
+	
+})();

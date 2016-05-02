@@ -1,0 +1,52 @@
+@mixin navbar-a-hover {
+  text-shadow: 0 1px 3px rgba(255,255,255,.5);
+  font-size: $font-size-md;
+  text-decoration: none;
+}
+
+.navbar {
+  margin-top: 30px;
+
+  a {
+    color: $text-primary-color;
+    font-size: $font-size-md;
+  }
+
+  a:hover{
+    color: $text-primary-color;
+    @include navbar-a-hover;
+  }
+
+}
+
+.navbar-default {
+    background-color: $bg-primary-color;
+    border-bottom: 1px solid $text-primary-color;
+}
+
+.navbar-header {
+  margin-top: 10px;
+}
+
+.navbar-brand {
+    font-size: $font-size-lg;
+    color: $text-primary-color;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: $text-primary-color;
+    background-color: $bg-primary-color;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: $text-primary-color;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: $text-primary-color;
+    @include navbar-a-hover;
+}
+
+.navbar-right {
+  margin-right: 15px;
+}

@@ -26,12 +26,22 @@
 				url: '/home',
 		      	cache: false,
 		    	templateUrl: 'home.html',
+		    	controller: 'HomeController as ctrl',
+		    	resolve: {
+		    		Sondas: function($http, $rootScope){
+		    			return $http.get($rootScope.apiURL('nasa/sonda'));
+		    		}
+		    	}
 		    });
 		
 		$urlRouterProvider.otherwise('/home');
 	}
 	
 	function run($rootScope, $anchorScroll){
+		
+		$rootScope.apiURL = function(endpoint){
+			return 'api/' + endpoint;
+		};
 		
 		$rootScope.$on("$locationChangeSuccess", function() {
             $anchorScroll();
