@@ -42,20 +42,23 @@
 		}
 		
 		function _virarParaEsquerda(){
-			ctrl.model.sonda.virarParaEsquerda($scope, $http).then(function(resp){
-				ctrl.model.sonda.atualizarPosicao(resp.data);
+			var sonda = ctrl.model.sonda;
+			sonda.virarParaEsquerda($scope, $http).then(function(resp){
+				sonda.atualizarPosicao(resp.data);
 			});
 		}
 		
 		function _virarParaDireita(){
-			ctrl.model.sonda.virarParaDireita($scope, $http).then(function(resp){
-				ctrl.model.sonda.atualizarPosicao(resp.data);
+			var sonda = ctrl.model.sonda;
+			sonda.virarParaDireita($scope, $http).then(function(resp){
+				sonda.atualizarPosicao(resp.data);
 			});
 		}
 		
 		function _moverParaFrente(){
-			ctrl.model.sonda.moverParaFrente($scope, $http).then(function(resp){
-				ctrl.model.sonda.atualizarPosicao(resp.data);
+			var sonda = ctrl.model.sonda;
+			sonda.moverParaFrente($scope, $http).then(function(resp){
+				sonda.atualizarPosicao(resp.data);
 			});
 		}
 		
