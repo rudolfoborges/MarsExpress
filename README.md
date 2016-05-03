@@ -1,6 +1,4 @@
-# MarsExpress
-
-## Teste de programação parte do processo seletivo do Elo7
+# MarsExpress - Teste de programação parte do processo seletivo do Elo7
 	
 No desafio foi utilizada a linguagem <b>Java versão 1.8</b> na estrutura de um projeto Spring Boot Maven
 	
