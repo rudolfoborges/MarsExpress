@@ -16,9 +16,9 @@ No desafio foi utilizada a linguagem <b>Java versão 1.8</b> na estrutura de um 
  
 ## Gulp:
 
-* **/*.js -> angular.app.js
-* **/*.html -> angular.views.js
-* **/*.scss -> style.css
+* ****/**.js -> angular.app.js
+* ****/**.html -> angular.views.js
+* ****/**.scss -> style.css
 * normal-images -> static/assets/images
 	
 ## Comandos:
