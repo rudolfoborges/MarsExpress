@@ -29,6 +29,18 @@
 		    			return $http.get($rootScope.apiURL('nasa/sonda'));
 		    		}
 		    	}
+		    })
+		    
+		    .state('rudolfoborges', {
+				url: '/rudolfoborges',
+		      	cache: true,
+		    	templateUrl: 'rudolfoborges.html'
+		    })
+		    
+		    .state('desafio', {
+				url: '/desafio',
+		      	cache: true,
+		    	templateUrl: 'desafio.html'
 		    });
 		
 		$urlRouterProvider.otherwise('/home');
@@ -64,6 +76,7 @@
             },
             requestError: function(rejection) {
                 $log.error('Request error:', rejection);
+                $rootScope.$broadcast('$showModal', {message: rejection.data.message || 'Ocorreu um erro :( Por favor, tente novamente mais tarde.'});
                 return $q.reject(rejection);
             },
             response: function(response) {
@@ -71,7 +84,7 @@
             },
             responseError: function(rejection) {
                 $log.error('Response error:', rejection);
-                $rootScope.$broadcast('$showModal', {message: rejection.data.message});
+                $rootScope.$broadcast('$showModal', {message: rejection.data.message || 'Ocorreu um erro :( Por favor, tente novamente mais tarde.'});
                 return $q.reject(rejection);
             }
         };

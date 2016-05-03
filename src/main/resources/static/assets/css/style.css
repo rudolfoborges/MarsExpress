@@ -110,3 +110,26 @@ h4 {
     .footer ul li.dev {
       display: inline-block;
       width: 70px; }
+
+.modal-body {
+  color: #333;
+  text-shadow: none; }
+
+.modal-header {
+  color: rgba(255, 255, 255, 0.75);
+  background-color: #333; }
+
+.modal-content {
+  border-radius: 0; }
+
+.sobre-min {
+  text-align: center;
+  width: 100%; }
+  .sobre-min img {
+    width: 300px; }
+  .sobre-min h1 {
+    border-bottom: 3px solid rgba(255, 255, 255, 0.75);
+    width: 200px;
+    margin: 0 auto; }
+  .sobre-min p {
+    margin-top: 20px; }

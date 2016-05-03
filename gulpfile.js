@@ -2,17 +2,16 @@
 
 var gulp = require('gulp'),
 	concat = require('gulp-concat'),
-	uglify = require('gulp-uglify'),
 	htmlmin = require('gulp-htmlmin'),
 	templateCache = require('gulp-angular-templatecache'),
-	sass = require('gulp-sass');
+	sass = require('gulp-sass'),
+	imagemin = require('gulp-imagemin');
 	
 
 gulp.task('angular', function(){
 	return gulp
 			.src('src/main/resources/angular/**/*.js')
 			.pipe(concat('angular.app.js'))
-			//.pipe(uglify())
 			.pipe(gulp.dest('src/main/resources/static/'));
 });
 
@@ -29,16 +28,28 @@ gulp.task('sass', function(){
 	    .pipe(gulp.dest('src/main/resources/static/assets/css'));
 });
 
+gulp.task('images', function() {
+	return gulp.src('src/main/resources/normal-images/*')
+		.pipe(imagemin({
+			progressive: true
+		}))
+		.pipe(gulp.dest('src/main/resources/static/assets/images'));
+});
+
 gulp.task('watch-js', function() {
-    return gulp.watch('src/main/resources/angular/**/*.js', ['angular'])
+    return gulp.watch('src/main/resources/angular/**/*.js', ['angular']);
 });
 
 gulp.task('watch-html', function() {
-    return gulp.watch('src/main/resources/angular/views/**/*.html', ['templates'])
+    return gulp.watch('src/main/resources/angular/views/**/*.html', ['templates']);
 });
 
 gulp.task('watch-sass', function() {
-    return gulp.watch('src/main/resources/static/assets/css/**/*.scss', ['sass'])
-})
+    return gulp.watch('src/main/resources/static/assets/css/**/*.scss', ['sass']);
+});
 
-gulp.task('default', ['sass', 'angular', 'templates', 'watch-sass', 'watch-js', 'watch-js', 'watch-html']);
+gulp.task('watch-images', function() {
+    return gulp.watch('src/main/resources/normal-images/**/*', ['images']);
+});
+
+gulp.task('default', ['sass', 'angular', 'templates', 'images', 'watch-sass', 'watch-js', 'watch-js', 'watch-html', 'watch-images']);

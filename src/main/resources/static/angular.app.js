@@ -29,6 +29,18 @@
 		    			return $http.get($rootScope.apiURL('nasa/sonda'));
 		    		}
 		    	}
+		    })
+		    
+		    .state('rudolfoborges', {
+				url: '/rudolfoborges',
+		      	cache: true,
+		    	templateUrl: 'rudolfoborges.html'
+		    })
+		    
+		    .state('desafio', {
+				url: '/desafio',
+		      	cache: true,
+		    	templateUrl: 'desafio.html'
 		    });
 		
 		$urlRouterProvider.otherwise('/home');
@@ -64,6 +76,7 @@
             },
             requestError: function(rejection) {
                 $log.error('Request error:', rejection);
+                $rootScope.$broadcast('$showModal', {message: rejection.data.message || 'Ocorreu um erro :( Por favor, tente novamente mais tarde.'});
                 return $q.reject(rejection);
             },
             response: function(response) {
@@ -71,7 +84,7 @@
             },
             responseError: function(rejection) {
                 $log.error('Response error:', rejection);
-                $rootScope.$broadcast('$showModal', {message: rejection.data.message});
+                $rootScope.$broadcast('$showModal', {message: rejection.data.message || 'Ocorreu um erro :( Por favor, tente novamente mais tarde.'});
                 return $q.reject(rejection);
             }
         };
@@ -169,6 +182,7 @@ var models = {};
 		ctrl.virarParaEsquerda = _virarParaEsquerda;
 		ctrl.virarParaDireita = _virarParaDireita;
 		ctrl.moverParaFrente = _moverParaFrente;
+		ctrl.enviarNovaSonda = _enviarNovaSonda;
 		
 		$scope.$watch('ctrl.model.sonda', function(newValue, old){
 			_obterPosicaoSonda(newValue);
@@ -206,6 +220,21 @@ var models = {};
 		function _moverParaFrente(){
 			ctrl.model.sonda.moverParaFrente($scope, $http).then(function(resp){
 				ctrl.model.sonda.atualizarPosicao(resp.data);
+			});
+		}
+		
+		function _enviarNovaSonda(){
+			var postData = {
+				planaltoX: 5,
+				planaltoY: 5,
+				posicaoX: 0,
+				posicaoY: 0,
+				direcao: 'N'
+			};
+			$http.post($scope.apiURL('nasa/sonda'), postData).then(function(resp){
+				var sonda = new models.Sonda(resp.data.lancamento, resp.data.nome)
+				ctrl.sondas.push(sonda);
+				$scope.$emit('$showModal', {message: 'A sonda ' + sonda.nome + ' chegou em marte'});
 			});
 		}
 	}

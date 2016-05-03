@@ -1,0 +1,18 @@
+.sobre-min {
+  text-align: center;
+  width: 100%;
+
+  img {
+    width: 300px;
+  }
+
+  h1 {
+    border-bottom: 3px solid $text-primary-color;
+    width: 200px;
+    margin: 0 auto;
+  }
+
+  p {
+    margin-top: 20px;
+  }
+}
