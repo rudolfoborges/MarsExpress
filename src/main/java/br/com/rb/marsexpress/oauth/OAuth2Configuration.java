@@ -32,10 +32,10 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 	}
 
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient("acme").secret("acmesecret")
+		clients.inMemory().withClient("marsexpress").secret("123e4567-e89b-12d3-a456-426655440000")
 				.authorizedGrantTypes("authorization_code", "refresh_token", "password").authorities("ADMIN")
-				.scopes("read", "write").resourceIds(ResourceServerConfiguration.RESOURCE_ID).refreshTokenValiditySeconds(600)
-				.accessTokenValiditySeconds(30);
+				.scopes("read", "write").resourceIds(ResourceServerConfiguration.RESOURCE_ID).refreshTokenValiditySeconds(604800)
+				.accessTokenValiditySeconds(86400);
 	}
 	
 	public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {

@@ -14,8 +14,9 @@
      </div>
      
      <div class="acoes">
-     	<a class="btn btn-primary" ng-click="ctrl.virarParaEsquerda()">Virar a Esquerda</a>
-     	<a class="btn btn-primary" ng-click="ctrl.virarParaDireita()">Virar a Direita</a>
-     	<a class="btn btn-primary" ng-click="ctrl.moverParaFrente()">Mover para Frente</a>
+     	<a class="btn btn-primary" ng-click="ctrl.virarParaEsquerda()" ng-if="ctrl.model.sonda">Virar a Esquerda</a>
+     	<a class="btn btn-primary" ng-click="ctrl.virarParaDireita()" ng-if="ctrl.model.sonda">Virar a Direita</a>
+     	<a class="btn btn-primary" ng-click="ctrl.moverParaFrente()" ng-if="ctrl.model.sonda">Mover para Frente</a>
+     	<a class="btn btn-primary" ng-click="ctrl.moverParaFrente()" ng-if="ctrl.model.sonda">Enviar Nova Sonda</a>
      </div>
 </div>
