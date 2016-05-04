@@ -13,6 +13,13 @@ No desafio foi utilizada a linguagem <b>Java versão 1.8</b> na estrutura de um 
 * Gulp: Para automatizar algumas tarefas como concatenar arquivos JavaScript, transformar HTML em templates Angular, processar arquivos SCSS e otimizar as imagens do projeto
 * Bower: Facilitar o download dos libs JavaScript e CSS
 * SASS: Pré-processadore CSS
+ 
+## Gulp:
+
+* ***/**.js -> angular.app.js
+* ***/**.html -> angular.views.js
+* ***/**.scss -> style.css
+* normal-images -> static/assets/images
 	
 ## Comandos:
 ### Para obter um access_token e refresh_token manualmente</h3>
