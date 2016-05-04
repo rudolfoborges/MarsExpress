@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import br.com.rb.marsexpress.model.Funcionario;
+import br.com.rb.marsexpress.domain.Funcionario;
 import br.com.rb.marsexpress.repository.FuncionarioRepository;
 
 @Service

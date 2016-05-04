@@ -1,8 +1,8 @@
 package br.com.rb.marsexpress.resource.request;
 
-import br.com.rb.marsexpress.model.Direcao;
-import br.com.rb.marsexpress.model.Planalto;
-import br.com.rb.marsexpress.model.Posicao;
+import br.com.rb.marsexpress.domain.Direcao;
+import br.com.rb.marsexpress.domain.Planalto;
+import br.com.rb.marsexpress.domain.Posicao;
 
 public class ProcedimentoPadraoRequest {
 

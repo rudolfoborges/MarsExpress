@@ -7,9 +7,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import br.com.rb.marsexpress.model.Comando;
-import br.com.rb.marsexpress.model.Planalto;
-import br.com.rb.marsexpress.model.Posicao;
+import br.com.rb.marsexpress.domain.Comando;
+import br.com.rb.marsexpress.domain.Planalto;
+import br.com.rb.marsexpress.domain.Posicao;
 
 @Component
 @Qualifier("rest")

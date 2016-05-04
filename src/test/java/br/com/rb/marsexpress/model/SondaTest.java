@@ -7,6 +7,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.rb.marsexpress.domain.Comando;
+import br.com.rb.marsexpress.domain.Direcao;
+import br.com.rb.marsexpress.domain.Planalto;
+import br.com.rb.marsexpress.domain.Posicao;
+import br.com.rb.marsexpress.domain.Sonda;
 import br.com.rb.marsexpress.exception.HoustonIHaveAProblemException;
 
 public class SondaTest {

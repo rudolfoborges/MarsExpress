@@ -1,4 +1,4 @@
-package br.com.rb.marsexpress.model;
+package br.com.rb.marsexpress.domain;
 
 import br.com.rb.marsexpress.exception.HoustonIHaveAProblemException;
 

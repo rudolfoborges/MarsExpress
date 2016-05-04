@@ -3,9 +3,9 @@ package br.com.rb.marsexpress.util;
 import java.io.InputStream;
 import java.util.List;
 
-import br.com.rb.marsexpress.model.Comando;
-import br.com.rb.marsexpress.model.Planalto;
-import br.com.rb.marsexpress.model.Posicao;
+import br.com.rb.marsexpress.domain.Comando;
+import br.com.rb.marsexpress.domain.Planalto;
+import br.com.rb.marsexpress.domain.Posicao;
 
 public interface DecodificadorDeMensagem {
 

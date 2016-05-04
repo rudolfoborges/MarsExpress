@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.rb.marsexpress.model.Comando;
-import br.com.rb.marsexpress.model.Posicao;
-import br.com.rb.marsexpress.model.Sonda;
+import br.com.rb.marsexpress.domain.Comando;
+import br.com.rb.marsexpress.domain.Posicao;
+import br.com.rb.marsexpress.domain.Sonda;
 import br.com.rb.marsexpress.resource.request.ProcedimentoPadraoRequest;
 import br.com.rb.marsexpress.resource.request.ReceberComandoRequest;
 import br.com.rb.marsexpress.service.NasaService;

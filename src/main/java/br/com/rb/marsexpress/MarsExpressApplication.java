@@ -10,7 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import br.com.rb.marsexpress.model.Funcionario;
+import br.com.rb.marsexpress.domain.Funcionario;
 import br.com.rb.marsexpress.repository.FuncionarioRepository;
 import br.com.rb.marsexpress.service.NasaService;
 import br.com.rb.marsexpress.util.DecodificadorDeMensagemTexto;

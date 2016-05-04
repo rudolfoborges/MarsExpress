@@ -6,7 +6,7 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import br.com.rb.marsexpress.model.Funcionario;
+import br.com.rb.marsexpress.domain.Funcionario;
 
 public class UserDetailsProxy implements UserDetails {
 	

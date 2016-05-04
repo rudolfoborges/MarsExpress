@@ -2,7 +2,7 @@ package br.com.rb.marsexpress.oauth;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
-import br.com.rb.marsexpress.model.Funcionario;
+import br.com.rb.marsexpress.domain.Funcionario;
 
 public class UserDetailsBuilder {
 	

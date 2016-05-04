@@ -3,6 +3,8 @@ package br.com.rb.marsexpress.model;
 import org.junit.Assert;
 import org.junit.Test;
 
+import br.com.rb.marsexpress.domain.Comando;
+
 public class ComandoTest {
 
 	@Test

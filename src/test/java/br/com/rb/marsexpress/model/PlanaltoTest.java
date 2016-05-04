@@ -4,6 +4,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.rb.marsexpress.domain.Direcao;
+import br.com.rb.marsexpress.domain.Planalto;
+import br.com.rb.marsexpress.domain.Posicao;
+
 public class PlanaltoTest {
 
 	private Planalto planalto;

@@ -4,10 +4,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.rb.marsexpress.model.Acao;
-import br.com.rb.marsexpress.model.AcaoVirarParaEsquerda;
-import br.com.rb.marsexpress.model.Direcao;
-import br.com.rb.marsexpress.model.Posicao;
+import br.com.rb.marsexpress.domain.Acao;
+import br.com.rb.marsexpress.domain.AcaoVirarParaEsquerda;
+import br.com.rb.marsexpress.domain.Direcao;
+import br.com.rb.marsexpress.domain.Posicao;
 
 
 public class AcaoVirarParaEsquerdaTest {
