@@ -35,4 +35,17 @@ var models = {};
 		this.historico.push('Nova posição X: ' + posicao.x + ', Y: ' + posicao.y + ', Direção: ' + posicao.direcao + ' Time: ' + new Date().getTime());
 	}
 	
+		
+})();
+
+(function(){
+	
+	models.Nasa = function(){
+		this.sondas = [];
+	}
+	
+	models.Nasa.prototype.enviarNovaSonda = function($scope, $http, req){
+		return $http.post($scope.apiURL('nasa/sonda'), req);
+	}
+	
 })();

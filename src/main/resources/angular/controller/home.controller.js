@@ -13,7 +13,7 @@
 			sonda: undefined
 		};
 		
-		ctrl.sondas = [];
+		ctrl.nasa = new models.Nasa();
 		
 		ctrl.virarParaEsquerda = _virarParaEsquerda;
 		ctrl.virarParaDireita = _virarParaDireita;
@@ -27,7 +27,7 @@
 		function _init(){
 			Sondas.data.forEach(function(i){
 				var sonda = new models.Sonda(i.lancamento, i.nome);
-				ctrl.sondas.push(sonda);
+				ctrl.nasa.sondas.push(sonda);
 			});
 		}
 		
@@ -63,16 +63,18 @@
 		}
 		
 		function _enviarNovaSonda(){
-			var postData = {
+			var req = {
 				planaltoX: 5,
 				planaltoY: 5,
 				posicaoX: 0,
 				posicaoY: 0,
 				direcao: 'N'
 			};
-			$http.post($scope.apiURL('nasa/sonda'), postData).then(function(resp){
+			
+			
+			ctrl.nasa.enviarNovaSonda($scope, $http, req).then(function(resp){
 				var sonda = new models.Sonda(resp.data.lancamento, resp.data.nome)
-				ctrl.sondas.push(sonda);
+				ctrl.nasa.sondas.push(sonda);
 				$scope.$emit('$showModal', {message: 'A sonda ' + sonda.nome + ' chegou em marte'});
 			});
 		}
