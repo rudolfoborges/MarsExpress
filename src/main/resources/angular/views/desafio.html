@@ -16,6 +16,16 @@
 		<li>Gulp: Para automatizar algumas tarefas como concatenar arquivos JavaScript, transformar HTML em templates Angular, processar arquivos SCSS e otimizar as imagens do projeto</li>
 		<li>Bower: Facilitar o download dos libs JavaScript e CSS</li>
 		<li>SASS: Pré-processadore CSS</li>
+		<li>Docker: Build utilizando o Docker com Dockerfile</li>
+	</ul>
+	
+	<h2>Docker Build</h2>
+	
+	<ul>
+		<li>1 - cd project_home</li>
+		<li>2 - mvn clean package</li>
+		<li>3 - docker build -t elo7/rudolfoborges .</li>
+		<li>4 - docker run -t -p 8080:8080 --name elo7 elo7/rudolfoborges</li>
 	</ul>
 	
 	<h2>Comandos:</h2>
@@ -25,7 +35,5 @@
 	<h3>Baixar os módulos Node para utilizar o Gulp</h3>
 	<p>mpn install</p>
 	
-	<h3>Para rodar o projeto na porta 8080</h3>
-	<p>Com o Java 8 -> mvn spring-boot:run</p>
 	
 </div>

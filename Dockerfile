@@ -1,5 +1,7 @@
 FROM ubuntu
 
+EXPOSE 8080
+
 # instalacao do oracle jdk 8
 RUN apt-get update && \
     apt-get upgrade -y && \
@@ -9,8 +11,12 @@ RUN apt-get update && \
     echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
     apt-get install -y --allow-unauthenticated oracle-java8-installer
 
-WORKDIR /opt
-
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
-CMD ["bash"]
+WORKDIR /opt
+
+ADD target/mars-express-0.0.1.jar mars-express-0.0.1.jar
+
+RUN sh -c 'touch /opt/mars-express-0.0.1.jar'
+
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/opt/mars-express-0.0.1.jar"]

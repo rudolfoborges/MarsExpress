@@ -1,5 +1,6 @@
 package br.com.rb.marsexpress;
 
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -32,6 +33,10 @@ public class MarsExpressApplication implements CommandLineRunner {
 	
 	public void desafioElo7() throws Exception {
 		InputStream in = MarsExpressApplication.class.getResourceAsStream("instrucoes.me");
+		if(in == null){
+			in = dockerBuild();
+		}
+		
 		OutputStream out = System.out;
 		nasaService.receberInstrucoesGerais(in, out, new DecodificadorDeMensagemTexto());
 		out.close();
@@ -43,4 +48,16 @@ public class MarsExpressApplication implements CommandLineRunner {
 		new Funcionario("Fulano", "xpto@nasa.com", "1234").salvar(funcionarioRepository);
 	}
 	
+	private InputStream dockerBuild(){
+		StringBuilder instrucoes = new StringBuilder()
+				.append("5 5\n")
+				.append("1 2 N\n")
+				.append("LMLMLMLMM\n")
+				.append("3 3 E\n")
+				.append("MMRMMRMRRM\n");
+		
+		ByteArrayInputStream in = new ByteArrayInputStream(instrucoes.toString().getBytes());
+		
+		return in;
+	}
 }

@@ -13,6 +13,7 @@ No desafio foi utilizada a linguagem <b>Java versão 1.8</b> na estrutura de um 
 * Gulp: Para automatizar algumas tarefas como concatenar arquivos JavaScript, transformar HTML em templates Angular, processar arquivos SCSS e otimizar as imagens do projeto
 * Bower: Facilitar o download dos libs JavaScript e CSS
 * SASS: Pré-processadore CSS
+* Docker: Build utilizando o Docker com Dockerfile
  
 ## Gulp:
 
@@ -20,6 +21,14 @@ No desafio foi utilizada a linguagem <b>Java versão 1.8</b> na estrutura de um 
 * ***/**.html -> angular.views.js
 * ***/**.scss -> style.css
 * normal-images -> static/assets/images
+
+## Docker Build
+
+1 - cd project_home
+2 - mvn clean package
+3 - docker build -t elo7/rudolfoborges .
+4 - docker run -t -p 8080:8080 --name elo7 elo7/rudolfoborges
+
 	
 ## Comandos:
 ### Para obter um access_token e refresh_token manualmente</h3>
@@ -28,9 +37,6 @@ curl -X POST -k -vu marsexpress:123e4567-e89b-12d3-a456-426655440000 http://loca
 ### Baixar os módulos Node para utilizar o Gulp
 mpn install
 	
-### Para rodar o projeto na porta 8080
-Com o Java 8 -> mvn spring-boot:run
-
 ## Interface
 
 ![alt text](https://github.com/rudolfoborges/MarsExpress/blob/master/marsexpress.png "Mars Express")
