@@ -24,10 +24,10 @@ No desafio foi utilizada a linguagem <b>Java versão 1.8</b> na estrutura de um 
 
 ## Docker Build
 
-1 - cd project_home
-2 - mvn clean package
-3 - docker build -t elo7/rudolfoborges .
-4 - docker run -t -p 8080:8080 --name elo7 elo7/rudolfoborges
+* cd project_home
+* mvn clean package
+* docker build -t elo7/rudolfoborges .
+* docker run -t -p 8080:8080 --name elo7 elo7/rudolfoborges
 
 	
 ## Comandos:
