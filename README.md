@@ -6,7 +6,7 @@ No desafio foi utilizada a linguagem <b>Java versão 1.8</b> na estrutura de um 
 	
 * Segunda Etapa: Na segunda etapa, uma camada Rest foi adicionada permitindo a interface com o mundo externo
 
-# Problema -Explorando Marte
+## Problema -Explorando Marte
 
 Um conjunto de sondas foram enviadas pela NASA a Marte e irá pousar num planalto. Esse planalto, que curiosamente é retangular, deve ser explorado pelas sondas para que suas câmeras embutidas consigam ter uma visão completa da área e enviar as imagens de volta para a Terra.
 
