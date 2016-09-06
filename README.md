@@ -1,5 +1,5 @@
-# MarsExpress - Teste de programação parte do processo seletivo do Elo7
-	
+# MarsExpress - Teste de programação
+
 No desafio foi utilizada a linguagem <b>Java versão 1.8</b> na estrutura de um projeto Spring Boot Maven
 	
 * Primeira Etapa: Para atender a primeira etapa do teste algumas classes de modelo e seus testes foram criadas representando a problema Explorando Marte
