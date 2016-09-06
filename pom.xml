@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>mars-express</name>
-	<description>Teste de Programação Elo7 - Explorando Marte</description>
+	<description>Teste de Programação - Explorando Marte</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
